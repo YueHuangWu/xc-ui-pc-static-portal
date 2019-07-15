@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view.js常用指令的测试</title>
+</head>
+<body>
+    <!--实现在body区域展示一个传智播客名称-->
+<div id="app">
+    <a v-bind:href="url">
+    <span v-text="name"></span>
+    </a>
+    <input type="text" v-model="name1" />+
+    <input type="text" v-model="name2" />=
+    <span v-text="result"></span>
+    <button v-on:click="change">计算</button>
+    <div v-bind:style="{ fontSize: size + 'px' }">javaEE培训</div>
+</div>
+</body>
+<script src="vue.min.js"></script>
+<script>
+    //编写MVVM中的model部分及VM（ViewModel）部分
+    var VM = new Vue({
+        el:'#app',//vm接管了app区域的管理
+        data:{//model数据
+            name:'黑马程序员传智播客',
+            name1:0,
+            name2:0,
+            result:0,
+            url:'http://www.itcast.cn',
+            size:33
+        },
+        methods:{
+            change:function () {
+                this.result = Number.parseInt(this.name1)+Number.parseInt(this.name2)
+               // alert("计算结果:"+this.result)
+            }
+        }
+    });
+</script>
+</html>
